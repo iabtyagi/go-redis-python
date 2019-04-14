@@ -1,0 +1,17 @@
+version: '3'
+services:
+  redis:
+    build: ./redis_docker/
+    #restart: always
+
+  go:
+    build: ./go_docker/
+    #restart: always
+    depends_on:
+      - redis
+
+  python:
+    build: ./python_docker/
+    #restart: always
+    depends_on:
+      - redis
